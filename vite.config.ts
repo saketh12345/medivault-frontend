@@ -1,9 +1,14 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
-import { componentTagger } from "lovable-tagger";
 
-// https://vitejs.dev/config/
+// Use dynamic import for ESM compatibility
+let componentTagger;
+(async () => {
+  const module = await import("lovable-tagger");
+  componentTagger = module.componentTagger;
+})();
+
 export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
@@ -11,8 +16,7 @@ export default defineConfig(({ mode }) => ({
   },
   plugins: [
     react(),
-    mode === 'development' &&
-    componentTagger(),
+    mode === "development" && componentTagger ? componentTagger() : null,
   ].filter(Boolean),
   resolve: {
     alias: {
