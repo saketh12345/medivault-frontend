@@ -7,10 +7,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test"
-  }
-}
-
-
+  },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
     "@radix-ui/react-accordion": "^1.2.0",
@@ -83,3 +80,4 @@
     "vite": "^5.4.1"
   }
 }
+
